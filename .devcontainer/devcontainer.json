@@ -1,6 +1,0 @@
-{
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "features": {
-  },
-  "postCreateCommand": "bash -c \"if [ -d \"/home/codespace/.venv\" ]; then source /home/codespace/.venv/bin/activate; else python3 -m venv /home/codespace/.venv && source /home/codespace/.venv/bin/activate; fi\""
-}
