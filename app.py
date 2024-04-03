@@ -15,15 +15,16 @@ def generate_text(prompt, max_new_tokens=216):
     # Decode the generated text
     generated_text = tokenizer.batch_decode(outputs)
 
-    return generated_text
+    return generated_text[0]  # Return the first element of the list
 
-# Example usage
-prompt = "In the recent Super Bowl LVIII,"
-generated_text = generate_text(prompt)
-print(generated_text)
+# Define the Gradio interface
+iface = gr.Interface(
+    fn=generate_text,  # Use the generate_text function
+    inputs=gr.inputs.Textbox(lines=2, placeholder="Enter your prompt here..."),
+    outputs="text",
+    title="Jamba Text Generation",
+    description="Generate text using the Jamba model."
+)
 
-def greet(name):
-    return "Hello " + name + "!!"
-
-iface = gr.Interface(fn=greet, inputs="text", outputs="text")
+# Launch the interface
 iface.launch()
